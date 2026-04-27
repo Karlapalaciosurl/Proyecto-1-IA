@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mesa de Ayuda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .contenedor {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            width: 500px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #1a73e8;
+            margin-bottom: 5px;
+            font-size: 24px;
+        }
+
+        p.subtitulo {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cce0ff;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #333;
+            background-color: #f7faff;
+        }
+
+        input:disabled {
+            background-color: #eef3fb;
+            color: #888;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background-color: #1558b0;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f0fe;
+            border-left: 4px solid #1a73e8;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .resultado p {
+            font-size: 13px;
+            color: #555;
+        }
+
+        .resultado span {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a73e8;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Mesa de Ayuda</h1>
+        <p class="subtitulo">Ingresa una solicitud y el sistema te dira a qué departamento pertenece.</p>
+
+        <div class="campo">
+            <label>ID de Ticket</label>
+            <input type="text" value="{{ ticket_id }}" disabled>
+        </div>
+
+        <div class="campo">
+            <label>Asunto</label>
+            <input type="text" id="asunto" placeholder="Ej: Problem with my order">
+        </div>
+
+        <div class="campo">
+            <label>Descripción</label>
+            <textarea id="descripcion" placeholder="I need help cancelling my purchase"></textarea>
+        </div>
+
+        <button onclick="clasificar()">Enviar solicitud</button>
+
+        <div class="resultado" id="resultado">
+            <p>Tu solicitud fue clasificada como:</p>
+            <span id="categoria"></span>
+        </div>
+    </div>
+
+    <script>
+        function clasificar() {
+            const descripcion = document.getElementById("descripcion").value;
+
+            if (descripcion.trim() === "") {
+                alert("Por favor escribe una descripción.");
+                return;
+            }
+
+            fetch("/clasificar", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ descripcion: descripcion })
+            })
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("categoria").textContent = data.categoria;
+                document.getElementById("resultado").style.display = "block";
+            });
+        }
+    </script>
+</body>
+</html>
