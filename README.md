@@ -24,13 +24,17 @@ ACCOUNT, CANCEL, CONTACT, DELIVERY, FEEDBACK, INVOICE, ORDER, PAYMENT, REFUND, S
 ---
 
 ## ¿Cómo correr el proyecto?
+
 **Entrenar y guardar el modelo:**
+
 cd src
 python guardar_modelo.py
 
 **Correr la página web:**
+
 cd web
 python app.py
+
 Luego abrir el navegador en: http://localhost:5000
 
 ---
