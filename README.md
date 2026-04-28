@@ -3,6 +3,8 @@
 
 Clasificador de tickets de soporte al cliente usando Naïve Bayes implementado desde cero.
 
+---
+
 ## ¿Qué hace?
 Clasifica solicitudes de clientes en 11 categorías:
 ACCOUNT, CANCEL, CONTACT, DELIVERY, FEEDBACK, INVOICE, ORDER, PAYMENT, REFUND, SHIPPING, SUBSCRIPTION
@@ -13,9 +15,13 @@ ACCOUNT, CANCEL, CONTACT, DELIVERY, FEEDBACK, INVOICE, ORDER, PAYMENT, REFUND, S
 - Flask (servidor web)
 - HTML, CSS y JavaScript
 
+---
+
 ## Instalación
 1. Clonar el repositorio
 2. Instalar las dependencias: pip install nltk flask
+
+---
 
 ## ¿Cómo correr el proyecto?
 **Entrenar y guardar el modelo:**
@@ -26,6 +32,8 @@ python guardar_modelo.py
 cd web
 python app.py
 Luego abrir el navegador en: http://localhost:5000
+
+---
 
 ## Estructura del proyecto
 ├── modelo/          --modelo entrenado (.pkl)
@@ -42,3 +50,5 @@ Luego abrir el navegador en: http://localhost:5000
 │   └── templates/
 │       └── index.html
 └── README.md
+
+---
