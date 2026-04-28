@@ -44,18 +44,30 @@ Luego abrir el navegador en: http://localhost:5000
 ## Estructura del proyecto
 
 ├── modelo/          --modelo entrenado (.pkl)
+
 ├── src/             --scripts de Python
+
 │   ├── explorar.py
+
 │   ├── limpieza_datos.py
+
 │   ├── bag_of_words.py
+
 │   ├── naive_bayes.py
 │   ├── kfolds.py
+
 │   ├── metricas.py
+
 │   └── guardar_modelo.py
+
 ├── web/             -- página web
+
 │   ├── app.py
+
 │   └── templates/
+
 │       └── index.html
+
 └── README.md
 
 
