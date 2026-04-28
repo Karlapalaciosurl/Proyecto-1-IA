@@ -28,11 +28,13 @@ ACCOUNT, CANCEL, CONTACT, DELIVERY, FEEDBACK, INVOICE, ORDER, PAYMENT, REFUND, S
 **Entrenar y guardar el modelo:**
 
 cd src
+
 python guardar_modelo.py
 
 **Correr la página web:**
 
 cd web
+
 python app.py
 
 Luego abrir el navegador en: http://localhost:5000
@@ -40,6 +42,7 @@ Luego abrir el navegador en: http://localhost:5000
 ---
 
 ## Estructura del proyecto
+
 ├── modelo/          --modelo entrenado (.pkl)
 ├── src/             --scripts de Python
 │   ├── explorar.py
@@ -54,5 +57,4 @@ Luego abrir el navegador en: http://localhost:5000
 │   └── templates/
 │       └── index.html
 └── README.md
-
 ---
